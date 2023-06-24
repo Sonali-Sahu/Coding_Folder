@@ -69,8 +69,21 @@ class RecentCounter:
 # to the (i+1)th friend for 1 <= i < n, and moving clockwise from the nth friend brings you to the 1st friend
 
 
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+        q = collections.deque([i for i in range(1, n + 1)])
+        
+        while len(q) > 1:
+            for i in range(k - 1):
+                val = q.popleft()
+                q.append(val)
+            
+            q.popleft()
+        
+        return q.popleft()
 
-
+#Q6. You are given an integer array deck. There is a deck of cards where every card has a 
+# unique integer. The integer on the ith card is deck[i].
 
 
 
