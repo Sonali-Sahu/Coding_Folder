@@ -44,5 +44,46 @@ class Solution:
                 students.append(a)
         return(len(students))
 
-# Q4. 
+# Q4. You have a RecentCounter class which counts the number of recent requests within a certain time frame.
+class RecentCounter:
+
+    def __init__(self):
+        self.s = []
+
+    def ping(self, t: int) -> int:
+        while self.s and t - self.s[0] > 3000:
+            self.s.pop(0)  # remove 1st el if it's 3000+ away from t
+        self.s.append(t)
+        return len(self.s) 
+        
+
+
+# Your RecentCounter object will be instantiated and called as such:
+# obj = RecentCounter()
+# param_1 = obj.ping(t)
+
+
+
+# Q5. There are n friends that are playing a game. The friends are sitting in a circle and are numbered 
+# from 1 to n in clockwise order. More formally, moving clockwise from the ith friend brings you 
+# to the (i+1)th friend for 1 <= i < n, and moving clockwise from the nth friend brings you to the 1st friend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
