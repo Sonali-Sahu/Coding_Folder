@@ -85,7 +85,105 @@ class Solution:
 #Q6. You are given an integer array deck. There is a deck of cards where every card has a 
 # unique integer. The integer on the ith card is deck[i].
 
+class Solution:
+    def deckRevealedIncreasing(self, deck: List[int]) -> List[int]:
+        L, Q, _ = len(deck)-1, collections.deque(), deck.sort()
+        for _ in range(L): 
+            Q.appendleft(deck.pop()), Q.appendleft(Q.pop())
+        return deck + list(Q)
 
+#Q7. Design a queue that supports `push` and `pop` operations in the front, middle, and back.
+
+# Implement the `FrontMiddleBack` class:
+
+
+class FrontMiddleBackQueue:
+
+    def __init__(self):
+        self.q1 = deque([])
+        self.q2 = deque([])
+
+    def pushFront(self, val: int) -> None:
+        self.q1.appendleft(val)
+        if len(self.q1) - len(self.q2) == 2:
+            self.q2.appendleft(self.q1.pop())
+
+    def pushMiddle(self, val: int) -> None:
+        if len(self.q1) - len(self.q2) == 1:
+            self.q2.appendleft(self.q1.pop())
+        self.q1.append(val)
+
+    def pushBack(self, val: int) -> None:
+        # append first so that if q1, q2 are empty q2 can have something to popleft 
+        self.q2.append(val)
+        if len(self.q1) == len(self.q2) - 1:
+            self.q1.append(self.q2.popleft())
+
+    def popFront(self) -> int:
+        if len(self.q1) == 0:
+            return -1
+        if len(self.q1) == len(self.q2):
+            self.q1.append(self.q2.popleft())
+        return self.q1.popleft()
+
+    def popMiddle(self) -> int:
+        if len(self.q1) == 0:
+            return -1
+        val = self.q1.pop()
+        if len(self.q1) + 1 == len(self.q2):
+            self.q1.append(self.q2.popleft())
+        return val   
+
+    def popBack(self) -> int:
+        if len(self.q2) == 0:
+            if len(self.q1) == 1:
+                return self.q1.pop()
+            return -1
+        val = self.q2.pop()
+        if len(self.q2) + 2 == len(self.q1):
+            self.q2.appendleft(self.q1.pop())
+        return val
+        
+
+
+# Your FrontMiddleBackQueue object will be instantiated and called as such:
+# obj = FrontMiddleBackQueue()
+# obj.pushFront(val)
+# obj.pushMiddle(val)
+# obj.pushBack(val)
+# param_4 = obj.popFront()
+# param_5 = obj.popMiddle()
+# param_6 = obj.popBack()
+
+
+# Q8. For a stream of integers, implement a data structure that checks if the last k integers parsed in the stream are equal to value.
+
+
+from collections import deque
+class DataStream:
+
+    def __init__(self, value: int, k: int):
+        self.value = value
+        self.k = k
+        self.deque = deque()
+        self.count = 0
+        
+
+    def consec(self, num: int) -> bool:
+        if len(self.deque) == self.k:
+            if self.deque[0] == self.value:
+                self.count -= 1
+            self.deque.popleft()
+        self.deque.append(num)
+        if num == self.value:
+            self.count += 1
+        return self.count == self.k
+        
+
+
+# Your DataStream object will be instantiated and called as such:
+# obj = DataStream(value, k)
+# param_1 = obj.consec(num)
 
 
 
