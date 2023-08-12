@@ -11,5 +11,15 @@ class Solution:
                     return [i,j]
 
 
-2. 
+2. using Single HashMap :- 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {} # empty dictionary
+
+        for i in range(len(nums)):
+            required_value = target - nums[i]
+            if required_value in hashmap:
+                return [i,hashmap[required_value]]
+            hashmap[nums[i]] = i
+        return []
                 
