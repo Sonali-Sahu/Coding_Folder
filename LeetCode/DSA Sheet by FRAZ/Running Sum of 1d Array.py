@@ -1,6 +1,7 @@
 https://leetcode.com/problems/running-sum-of-1d-array/description/
 
 Time Complexity - O(n)
+Space Complexity = O(n)
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         new_list = []
