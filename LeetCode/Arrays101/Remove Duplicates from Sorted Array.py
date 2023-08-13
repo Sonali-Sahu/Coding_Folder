@@ -16,3 +16,16 @@ class Solution:
         nums[:] = new_list
         
         return c
+
+# TC = O(n)
+# no extra space consumed
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        c = 1
+        ele = nums [0]
+        for i in nums:
+            if ele != i:
+                c +=1
+                ele = i
+                nums[c-1] = i         
+        return c
