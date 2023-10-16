@@ -58,7 +58,7 @@ class Solution:
 
 
 
-
+# occurence counter of string using dict
 sample_string = "this is my home"
 counterS = {}
 
