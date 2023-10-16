@@ -53,7 +53,20 @@ class Solution:
 
 
 # sorted way
+#  used built-in sorted method
 
+
+
+
+
+sample_string = "this is my home"
+counterS = {}
+
+for i in range(len(sample_string)):
+    if sample_string[i] != " ":
+        counterS[sample_string[i]] = 1 + counterS.get(sample_string[i],0)
+    
+print(counterS)
 
 
         
