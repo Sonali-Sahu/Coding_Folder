@@ -61,12 +61,53 @@ class Solution:
 # occurence counter of string using dict
 sample_string = "this is my home"
 counterS = {}
-
+# using single statement
 for i in range(len(sample_string)):
     if sample_string[i] != " ":
         counterS[sample_string[i]] = 1 + counterS.get(sample_string[i],0)
     
 print(counterS)
+
+
+
+
+# merge two arrays
+arr1 = [0,1,2,3,5]
+arr2 = [2,3,4,]
+len_a1 = len(arr1)
+len_a2 = len(arr2)
+n = len_a1 + len_a2
+result_arr = [0]*n
+i = 0
+j = 0
+k = 0
+while  i < len_a1 and j <  len_a2 :
+    if arr1[i] < arr2[j] :
+        result_arr[k] = arr1[i]
+        i +=1
+        k += 1
+    else:
+        result_arr[k] = arr2[j]
+        j += 1
+        k += 1
+    
+    
+while  i < len_a1:
+    result_arr[k] = arr1[i]
+    i += 1
+    k += 1
+
+while  j < len_a2:
+    result_arr[k] = arr2[j]
+    j += 1
+    k += 1    
+    
+    
+print(result_arr)
+    
+
+
+
 
 
         
